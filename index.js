@@ -47,3 +47,13 @@ function randomDrinks(drinks) {
 
 randomD.addEventListener("click", randomDrinks);
 
+function randomDrinks (drinks) {
+    const randomIndex = Math.floor(Math.random()*drinks.length);
+    console.log(randomIndex)
+    let randomCocktail = drinks[randomIndex];
+    cocktailList.innerHTML = '';
+    displayDrinks ([randomCocktail]);
+}
+
+
+
