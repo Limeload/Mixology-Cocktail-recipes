@@ -27,7 +27,7 @@ function displayDrinks(drinks) {
     card.appendChild(image)
     console.log(image)
  });
- console.log(randomD)
+//  console.log(randomD)
 }
 
 // Search by
@@ -42,3 +42,7 @@ function randomDrinks (drinks) {
 
 
 
+const toggleBtn = document.querySelector("#togglebtn")
+toggleBtn.addEventListener('click', () => {
+document.body.classList.toggle('dark-mode')
+})
