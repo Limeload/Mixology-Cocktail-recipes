@@ -14,7 +14,7 @@ function fetchDrinks() {
     })
 }
 
-let cocktailList = document.querySelector(".cocktail-list");
+let cocktailList = document.querySelector("#cocktail-list");
 
 function displayDrinks(drinks) {
   drinks.forEach(drink=> {
@@ -54,6 +54,16 @@ function randomDrinks (drinks) {
     cocktailList.innerHTML = '';
     displayDrinks ([randomCocktail]);
 }
+
+//Search by field
+let search = document.querySelector('#search-bar');
+search.addEventListener("keyup", (e) => {
+    const input=e.target.value;
+const filterD = drinks.filter(drink =>{
+    return drink.strDrink.toLowerCase().includes(input.toLowerCase())
+})
+displayDrinks(filterD)
+}) 
 
 
 
