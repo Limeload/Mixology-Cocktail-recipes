@@ -272,6 +272,7 @@ label.form-check-label {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   grid-gap: 10px;
+  flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
 }
 
