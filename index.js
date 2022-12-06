@@ -14,22 +14,31 @@ function fetchDrinks() {
 }
 
 let cocktailList = document.querySelector("#cocktail-list");
-
-function displayDrinks (drinks) {
- const card = drinks.map(drinks => {
-   return `
-   <div class="container-card">
-   <div id="card" style="width:18rem";>
-   <img src = "${drinks.strDrinkThumb}" class="card-img-top" alt="${drinks.strDrink}">
-   <div id="card-body">
-   </div>
-   </div>
-   </div>
-   `
-   .join('');
- })
- cocktailList.innerHTML += card;
+let randomD = document.querySelector("#random-drink");
+function displayDrinks(drinks) {
+    console.log(drinks)
+//cocktailList.innerHTML += card;
+//randomD.addEventListener("click", randomDrinks(drinks));
+ drinks.forEach(drink=> {
+    //console.log(drink)
+    const image = document.createElement('img')
+    image.src = drink.strDrinkThumb
+    let card = document.querySelector('.card-img-top');
+    card.appendChild(image)
+    console.log(image)
+ });
+ console.log(randomD)
 }
 
 // Search by
+
+function randomDrinks (drinks) {
+    const randomIndex = Math.floor(Math.random()*drinks.length);
+    console.log(randomIndex)
+    let randomCocktail = drinks[randomIndex];
+    cocktailList.innerHTML = '';
+    displayDrinks ([randomCocktail]);
+}
+
+
 
