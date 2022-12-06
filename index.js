@@ -31,8 +31,4 @@ function displayDrinks (drinks) {
  cocktailList.innerHTML += card;
 }
 
-
-// Search my name - by Waltz
-// random cocktail - by amy
-// toggle darkmode - by waltz
-// explore all button- by amy
+// Search by
