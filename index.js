@@ -26,8 +26,8 @@ function displayDrinks (drinks) {
    </div>
    </div>
    `
+   .join('');
  })
-
  cocktailList.innerHTML += card;
 }
 
@@ -35,3 +35,4 @@ function displayDrinks (drinks) {
 // Search my name - by Waltz
 // random cocktail - by amy
 // toggle darkmode - by waltz
+// explore all button- by amy
