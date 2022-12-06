@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchDrinks();
 })
 
+
 // GET request
 function fetchDrinks() {
     const url = "http://localhost:3000/drinks"
@@ -13,23 +14,36 @@ function fetchDrinks() {
     })
 }
 
-let cocktailList = document.querySelector("#cocktail-list");
+let cocktailList = document.querySelector(".cocktail-list");
 
-function displayDrinks (drinks) {
- const card = drinks.map(drinks => {
-   return `
-   <div class="container-card">
-   <div id="card" style="width:18rem";>
-   <img src = "${drinks.strDrinkThumb}" class="card-img-top" alt="${drinks.strDrink}">
-   <div id="card-body">
-   </div>
-   </div>
-   </div>
-   `
-   .join('');
- })
- cocktailList.innerHTML += card;
+function displayDrinks(drinks) {
+  drinks.forEach(drink=> {
+
+    const p = document.createElement("p");
+    p.textContent = `${drink.strDrink}`;
+    p.className = "card-text";
+    cocktailList.appendChild(p);
+
+    const glass = document.createElement("p");
+    glass.className = "card-title";
+    glass.innerHTML = `${drink.glass}`
+    cocktailList.appendChild(glass);
+
+    const image = document.createElement('img')
+    image.setAttribute('class', 'card-img-top');
+    image.setAttribute('style', 'width: 18rem;');
+    image.src = drink.strDrinkThumb;
+    image.alt = drink.strDrink;
+    cocktailList.appendChild(image);
+ });
 }
 
 // Search by
+let randomD = document.querySelector("#random-drink");
+function randomDrinks(drinks) {
+   let item = drinks[Math.floor((Math.random() * drinks.length))];
+   displayDrinks([item]);
+}
+
+randomD.addEventListener("click", randomDrinks);
 
