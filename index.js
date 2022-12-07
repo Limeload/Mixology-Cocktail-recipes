@@ -2,43 +2,62 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchDrinks();
 })
 
+
 // GET request
 function fetchDrinks() {
     const url = "http://localhost:3000/drinks"
     fetch(url)
     .then((response => response.json()))
-    .then(drinks =>  {
-        displayDrinks(drinks)
-
-    })
+    .then(drinks => displayDrinks(drinks))
 }
 
-let cocktailList = document.querySelector("#cocktail-list");
-let randomD = document.querySelector("#random-drink");
+const cocktailList = document.querySelector(".cocktail-list");
+
 function displayDrinks(drinks) {
-    console.log(drinks)
-//cocktailList.innerHTML += card;
-//randomD.addEventListener("click", randomDrinks(drinks));
- drinks.forEach(drink=> {
-    //console.log(drink)
+    drinks.forEach(drink=> {
+    const p = document.createElement("p");
+    p.textContent = drink.strDrink;
+    p.className = "card-text";
+    cocktailList.appendChild(p);
+
+    const glass = document.createElement("p");
+    glass.className = "card-title";
+    glass.textContent = drink.glass
+    cocktailList.appendChild(glass);
+
     const image = document.createElement('img')
-    image.src = drink.strDrinkThumb
-    let card = document.querySelector('.card-img-top');
-    card.appendChild(image)
-    console.log(image)
+    image.setAttribute('class', 'card-img-top');
+    image.setAttribute('style', 'width: 18rem;');
+    image.src = drink.strDrinkThumb;
+    image.alt = drink.strDrink;
+    cocktailList.appendChild(image);
+
+    numberOfDrinks = drinks.length;
+    drinksArray = [...drinks];
  });
-//  console.log(randomD)
 }
 
-// Search by
 
-function randomDrinks (drinks) {
-    const randomIndex = Math.floor(Math.random()*drinks.length);
-    console.log(randomIndex)
-    let randomCocktail = drinks[randomIndex];
-    cocktailList.innerHTML = '';
-    displayDrinks ([randomCocktail]);
+function randomDrinks() {
+    let randomIndex = Math.floor(Math.random() * numberOfDrinks);
+    let item = drinksArray[randomIndex];
+    cocktailList.textContent = "" ;
+    displayDrinks([item]);
 }
+
+const randomDrinkbtn = document.querySelector("#random-drink");
+randomDrinkbtn.addEventListener("click", randomDrinks);
+
+
+//Search by field
+let search = document.querySelector('#search-bar');
+search.addEventListener("keyup", (e) => {
+    const input=e.target.value;
+const filterD = drinks.filter(drink =>{
+    return drink.strDrink.toLowerCase().includes(input.toLowerCase())
+})
+displayDrinks(filterD)
+}) 
 
 
 
