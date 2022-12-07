@@ -1,67 +1,64 @@
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
     fetchDrinks();
 })
-
-
 // GET request
 function fetchDrinks() {
     const url = "http://localhost:3000/drinks"
     fetch(url)
     .then((response => response.json()))
-    .then(drinks => displayDrinks(drinks))
-}
-
-const cocktailList = document.querySelector(".cocktail-list");
-
-function displayDrinks(drinks) {
-    drinks.forEach(drink=> {
+    .then(drinks => {
+        drinks.forEach((drink) => displayDrinks(drink)),
+        numberOfDrinks = drinks.length,
+        drinksArray = [...drinks];
+       })
+    }
+// Displaying drinks into a card
+let cocktailList = document.querySelector(".cocktail-list");
+const displayDrinks = (drinks) => {
     const p = document.createElement("p");
-    p.textContent = drink.strDrink;
+    p.textContent = drinks.strDrink;
     p.className = "card-text";
     cocktailList.appendChild(p);
-
     const glass = document.createElement("p");
     glass.className = "card-title";
-    glass.textContent = drink.glass
+    glass.textContent = drinks.glass
     cocktailList.appendChild(glass);
-
     const image = document.createElement('img')
     image.setAttribute('class', 'card-img-top');
     image.setAttribute('style', 'width: 18rem;');
-    image.src = drink.strDrinkThumb;
-    image.alt = drink.strDrink;
+    image.src = drinks.strDrinkThumb;
+    image.alt = drinks.strDrink;
     cocktailList.appendChild(image);
-
-    numberOfDrinks = drinks.length;
-    drinksArray = [...drinks];
- });
 }
-
-
-function randomDrinks() {
-    let randomIndex = Math.floor(Math.random() * numberOfDrinks);
-    let item = drinksArray[randomIndex];
-    cocktailList.textContent = "" ;
-    displayDrinks([item]);
-}
-
-const randomDrinkbtn = document.querySelector("#random-drink");
-randomDrinkbtn.addEventListener("click", randomDrinks);
-
-
 //Search by field
-let search = document.querySelector('#search-bar');
+const search = document.querySelector('#search-bar');
 search.addEventListener("keyup", (e) => {
-    const input=e.target.value;
-const filterD = drinks.filter(drink =>{
-    return drink.strDrink.toLowerCase().includes(input.toLowerCase())
+const input = e.target.value;
+console.log(input)
+cocktailList.textContent = "";
+console.log(drinksArray)
+let filterDrinks = drinksArray.filter(item => {
+    return item.strDrink.toLowerCase().includes(input.toLowerCase())
 })
-displayDrinks(filterD)
-}) 
-
-
-
+displayDrinks(filterDrinks);
+})
+//Toggle dark-mode
 const toggleBtn = document.querySelector("#togglebtn")
 toggleBtn.addEventListener('click', () => {
 document.body.classList.toggle('dark-mode')
 })
+// Random drinks generator
+function randomDrinks() {
+    let randomIndex = Math.floor(Math.random() * numberOfDrinks);
+    let item = drinksArray[randomIndex];
+    cocktailList.textContent = "" ;
+    displayDrinks(item);
+}
+const randomDrinkbtn = document.querySelector("#random-drink");
+randomDrinkbtn.addEventListener("click", randomDrinks);
+// Show all drinks
+const showAllDrinks = document.getElementById("show-all");
+showAllDrinks.addEventListener("mouseover", () => {
+cocktailList.textContent = "";
+drinksArray.map((drink) => displayDrinks(drink))
+});
