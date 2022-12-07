@@ -276,38 +276,19 @@ label.form-check-label {
   font-size: 16px;
 }
 
-.cocktail-list {
+.container-card{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  justify-content: center;  
+}
+
+/* .cocktail-list {
   padding-inline-start: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   grid-gap: 10px;
-  flex: 1 1 auto;
-  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-}
-
-.container-card {
-  display: flex;
-  flex: 1 1 auto;
-  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-  flex-wrap: wrap;
-  margin-top: 200px;
-  margin-left: 80px;
-  margin-right: 80px;
-  justify-content: center;
-}
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  height: auto;
-  border-color: black;
-}
-
+} */
 
 .card-title {
   margin-bottom: var(--bs-card-title-spacer-y);
@@ -320,8 +301,7 @@ label.form-check-label {
   font-size: 20px;
   font-weight: bolder;
   font-family: 'Comfortaa', cursive;
-} */
-
+} 
 
 .card-img-top {
   width: 100%;
