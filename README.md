@@ -3,12 +3,13 @@
 Mixology is a Single Page Application allowing different kinds of selection operations over Cocktail recipes. 
 
 What a user can do :
-* Search a cocktail recipe by name.
-* Browse all cocktail recipe lists by the first letter.
+* Search for a cocktail recipe by name.
 * Toggle dark or light mode.
 * Generate random cocktail recipe.
+
 ## Stretch goals
 * Filter & sort by ingredient, category, glass, vegan or "makeable from your bar".
+* Browse all cocktail recipe lists by the first letter.
 * Able to "Favourite" cocktails.
 * See measurements in either parts, ml, cl or oz.
 * Create your own cocktail recipe.
@@ -44,7 +45,7 @@ As a visitor of the Mixology website, a user can expect the following:
 * To be able to learn about cocktails and their recipes so that it is easier to prepare them when user wants to.
 * To be able to find cocktail recipes with ingredients available by a user.
 * High quality images of the cocktail.
-* To be able to suggest when a user is indecisive.
+* To be able to offer a suggestion when a user is indecisive.
 
 ## Figma 
 

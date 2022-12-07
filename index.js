@@ -49,5 +49,15 @@ const randomDrinkbtn = document.querySelector("#random-drink");
 randomDrinkbtn.addEventListener("click", randomDrinks);
 
 
+//Search by field
+let search = document.querySelector('#search-bar');
+search.addEventListener("keyup", (e) => {
+    const input=e.target.value;
+const filterD = drinks.filter(drink =>{
+    return drink.strDrink.toLowerCase().includes(input.toLowerCase())
+})
+displayDrinks(filterD)
+}) 
+
 
 
