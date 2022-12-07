@@ -61,3 +61,7 @@ displayDrinks(filterD)
 
 
 
+const toggleBtn = document.querySelector("#togglebtn")
+toggleBtn.addEventListener('click', () => {
+document.body.classList.toggle('dark-mode')
+})
