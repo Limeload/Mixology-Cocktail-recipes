@@ -20,6 +20,11 @@ const displayDrinks = (drinks) => {
 
     const {strDrink, strDrinkThumb, instructions, glass } = drink;
 
+    const div = document.createElement("div");
+    div.className = "container-card";
+    div.setAttribute('style', "width:18rem");
+    cocktailList.appendChild(div);
+
     const image = document.createElement('img')
     image.setAttribute('class', 'card-img-top');
     image.src = strDrinkThumb;
