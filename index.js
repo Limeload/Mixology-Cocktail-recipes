@@ -16,23 +16,48 @@ function fetchDrinks() {
 // Displaying drinks into a card
 let cocktailList = document.querySelector(".cocktail-list");
 const displayDrinks = (drinks) => {
-    drinks.forEach((drink) => {
-    const p = document.createElement("p");
-    p.textContent = drink.strDrink;
-    p.className = "card-text";
-    cocktailList.appendChild(p);
-    const glass = document.createElement("p");
-    glass.className = "card-title";
-    glass.textContent = drink.glass
-    cocktailList.appendChild(glass);
+     drinks.forEach((drink) => {
+
+    const {strDrink, strDrinkThumb, instructions, glass } = drink;
+
+    const div = document.createElement("div");
+    div.className = "container-card";
+    div.setAttribute('style', "width:18rem");
+    cocktailList.appendChild(div);
+
     const image = document.createElement('img')
     image.setAttribute('class', 'card-img-top');
-    image.setAttribute('style', 'width: 18rem;');
-    image.src = drink.strDrinkThumb;
-    image.alt = drink.strDrink;
+    image.src = strDrinkThumb;
+    image.alt = strDrink;
     cocktailList.appendChild(image);
+
+    const p1 = document.createElement("p");
+    p1.textContent = strDrink;
+    p1.className = "card-text";
+    cocktailList.appendChild(p1);
+
+    const h5 = document.createElement("h5");
+    h5.className = "card-title";
+    h5.textContent = glass
+    cocktailList.appendChild(h5);
+
+    const p2 = document.createElement("p");
+    let allIngredients = [
+        `${drink.ingredients[0].ingredientName} - ${drink.ingredients[0].measurement} ${drink.ingredients[0].units}`,
+        ` ${drink.ingredients[1].ingredientName} - ${drink.ingredients[1].measurement} ${drink.ingredients[1].units}`,
+        ` ${drink.ingredients[2].ingredientName} - ${drink.ingredients[2].measurement} ${drink.ingredients[2].units}`,
+    ]
+    p2.textContent = "Ingredients : " + allIngredients;
+    p2.setAttribute('id', "ingredient-list");
+    cocktailList.appendChild(p2);
+
+    const p3 = document.createElement("p");
+    p3.textContent = "Instructions : " + instructions
+    cocktailList.appendChild(p3);
+    
 })
 }
+
 //Search by field
 const search = document.querySelector('#search-bar');
 search.addEventListener("keyup", (e) => {
@@ -63,7 +88,7 @@ const randomDrinkbtn = document.querySelector("#random-drink");
 randomDrinkbtn.addEventListener("click", randomDrinks);
 
 
-// Show all drinks
+//Show all drinks
 const showAllDrinks = document.getElementById("show-all");
 showAllDrinks.addEventListener("mouseover", () => {
 cocktailList.textContent = "";
