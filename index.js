@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchDrinks();
 })
+
 // GET request
 function fetchDrinks() {
     const url = "http://localhost:3000/drinks"
@@ -62,9 +63,7 @@ const displayDrinks = (drinks) => {
 const search = document.querySelector('#search-bar');
 search.addEventListener("keyup", (e) => {
 const input = e.target.value;
-console.log(input)
 cocktailList.textContent = "";
-console.log(drinksArray)
 let filterDrinks = drinksArray.filter(drink => {
     return drink.strDrink.toLowerCase().includes(input.toLowerCase())
 })
@@ -86,7 +85,6 @@ function randomDrinks() {
 }
 const randomDrinkbtn = document.querySelector("#random-drink");
 randomDrinkbtn.addEventListener("click", randomDrinks);
-
 
 //Show all drinks
 const showAllDrinks = document.getElementById("show-all");
