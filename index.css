@@ -13,18 +13,8 @@ body {
     line-height: var(--bs-body-line-height);
     color: var(--bs-body-color);
     text-align: var(--bs-body-text-align);
-    /* background-color:#fff */
   }
   
-body.dark {
-
-  background-color: #212529;
-  color:#212529
-
-}
-
-  
-
   p {
     font-family: 'Comfortaa', cursive;
     font-size: 13px;
